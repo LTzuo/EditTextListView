@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">EditTextListView</string>
+    <string name="action_settings">Settings</string>
+    <string name="add">+增加行程明细</string>
+    <string name="details1">行程明细(</string>
+    <string name="details2">)</string>
+    <string name="delete">删除</string>
+    <string name="place">出差地点:</string>
+    <string name="hint">请输入出差地点（必填）</string>
+    <string name="stime">开始时间:</string>
+    <string name="etime">结束时间:</string>
+    <string name="timehint">请选择（必填）</string>
+</resources>
