@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import com.ltz.edittextlistview.R;
 import com.ltz.edittextlistview.adapter.ListAdapter;
 import com.ltz.edittextlistview.adapter.MyAdapter;
@@ -25,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static List<ItemBean> data2;
     public static List<Bean>    data1;
+
+    public StringBuffer QRContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              ContentView(1);
+                QRContent = adapter.getContext();
+                ContentView(1);
             }
         });
     }
@@ -148,10 +150,9 @@ public class MainActivity extends AppCompatActivity {
                 .marginPt(3) // 二维码的外边距
                 .centerImage(centerImage) // 二维码中间图标
                 .build()
-                .encode("测试");
+                .encode(QRContent.toString());
 
         qr_img.setImageBitmap(qrCodeImage);
-
     }
 
 

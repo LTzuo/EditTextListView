@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.ltz.edittextlistview.R;
 import com.ltz.edittextlistview.bean.Bean;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,13 +24,23 @@ import java.util.List;
 public class MyAdapter extends BaseAdapter{
 
     private Context context;
-    private List<Bean> mDatas;
+    private List<Bean> mDatas = new ArrayList<>();
     private LayoutInflater inflater;
 
     public MyAdapter(Context context, List<Bean> datas){
         this.context = context;
         this.mDatas = datas;
         this.inflater = LayoutInflater.from(context);
+    }
+
+    public StringBuffer getContext(){
+        StringBuffer sb = new StringBuffer();
+        for(Bean b : mDatas){
+            if(!TextUtils.isEmpty(b.getEdit_string())){
+                sb.append(b.getTitle()+":"+b.getEdit_string()+"\n");
+            }
+        }
+        return sb;
     }
 
     @Override
