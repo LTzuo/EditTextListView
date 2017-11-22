@@ -14,7 +14,7 @@
             android:id="@+id/details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/details1"
+            android:text="垃圾回收明细("
             android:textSize="12sp" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"
-            android:text="@string/place"
+            android:text="数量："
             android:textSize="14sp" />
 
         <EditText
@@ -64,7 +64,7 @@
             android:layout_toEndOf="@+id/place"
             android:layout_toRightOf="@+id/place"
             android:background="@null"
-            android:hint="@string/hint"
+            android:hint="(必填)"
             android:padding="12dp"
             android:textSize="14sp" />
 
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"
-            android:text="@string/stime"
+            android:text="单价："
             android:textSize="14sp" />
 
         <TextView
@@ -90,7 +90,7 @@
             android:layout_toRightOf="@+id/stime"
             android:drawableEnd="@mipmap/more"
             android:drawableRight="@mipmap/more"
-            android:hint="@string/timehint"
+            android:hint="0.18元"
             android:padding="12dp"
             android:textSize="14sp" />
 
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="12dp"
-            android:text="@string/etime"
+            android:text="单位："
             android:textSize="14sp" />
 
         <TextView
@@ -117,7 +117,7 @@
             android:layout_toRightOf="@+id/etime"
             android:drawableEnd="@mipmap/more"
             android:drawableRight="@mipmap/more"
-            android:hint="@string/timehint"
+            android:hint="斤"
             android:padding="12dp"
             android:textSize="14sp" />
 

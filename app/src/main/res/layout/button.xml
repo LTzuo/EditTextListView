@@ -7,5 +7,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add"
-        android:textColor="#14e4ff" />
+        android:textColor="#104E8B" />
 </LinearLayout>
