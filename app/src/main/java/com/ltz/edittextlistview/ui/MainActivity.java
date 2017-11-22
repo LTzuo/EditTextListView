@@ -1,5 +1,6 @@
 package com.ltz.edittextlistview.ui;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -9,14 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.github.yoojia.qrcode.qrcode.QRCodeEncoder;
 import com.ltz.edittextlistview.R;
 import com.ltz.edittextlistview.adapter.ListAdapter;
 import com.ltz.edittextlistview.adapter.MyAdapter;
 import com.ltz.edittextlistview.bean.Bean;
 import com.ltz.edittextlistview.bean.ItemBean;
+import com.ltz.qrcode.qrcode.QRCodeEncoder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, QRCodeScanActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -100,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void initButton2Layout(){
         Button  back = (Button) findViewById(R.id.back);
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // 二维码中间图标
-        final Bitmap centerImage = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        final Bitmap centerImage = BitmapFactory.decodeResource(getResources(), R.mipmap.ltz_img);
         // 生成的二维码图案
         Bitmap qrCodeImage = new QRCodeEncoder.Builder()
                 .width(500) // 二维码图案的宽度
@@ -151,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 .encode("测试");
 
         qr_img.setImageBitmap(qrCodeImage);
+
     }
 
 
