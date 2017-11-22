@@ -1,13 +1,17 @@
 package com.ltz.edittextlistview.ui;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.github.yoojia.qrcode.qrcode.QRCodeEncoder;
 import com.ltz.edittextlistview.R;
 import com.ltz.edittextlistview.adapter.ListAdapter;
 import com.ltz.edittextlistview.adapter.MyAdapter;
@@ -38,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         }else if(id == R.id.btn2){
             setContentView(R.layout.listview_layout);
             initButton2Layout();
+        }else if(id == 1){
+            setContentView(R.layout.qr_layout);
+            initQrLayout();
         }
     }
 
@@ -54,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ContentView(R.id.btn2);
+            }
+        });
+        Button qr = (Button) findViewById(R.id.qr);
+        qr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
@@ -82,10 +96,12 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"生成订单",Toast.LENGTH_SHORT).show();
+              ContentView(1);
             }
         });
     }
+
+
 
     private void initButton2Layout(){
         Button  back = (Button) findViewById(R.id.back);
@@ -111,6 +127,30 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void initQrLayout(){
+        ImageView qr_img = (ImageView) findViewById(R.id.qr_img);
+        Button  back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ContentView(0);
+            }
+        });
+        // 二维码中间图标
+        final Bitmap centerImage = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        // 生成的二维码图案
+        Bitmap qrCodeImage = new QRCodeEncoder.Builder()
+                .width(500) // 二维码图案的宽度
+                .height(500)
+                .paddingPx(0) // 二维码的内边距
+                .marginPt(3) // 二维码的外边距
+                .centerImage(centerImage) // 二维码中间图标
+                .build()
+                .encode("测试");
+
+        qr_img.setImageBitmap(qrCodeImage);
     }
 
 
