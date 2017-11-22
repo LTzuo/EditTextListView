@@ -16,7 +16,6 @@ import com.ltz.edittextlistview.bean.Bean;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * listview 里面嵌套ediTtext 滑动之后 保存数据
  * Created by 1 on 2017/11/22.
