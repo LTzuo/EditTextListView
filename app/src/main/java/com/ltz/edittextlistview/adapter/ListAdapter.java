@@ -38,6 +38,8 @@ public class ListAdapter extends BaseAdapter {
 
     //List<Map<Integer, String>> p = new ArrayList<>();
 
+    private int index = -1;
+
     public ListAdapter(List<ItemBean> datas, Context context, Activity activity) {
         this.datas = datas;
         this.context = context;
@@ -117,28 +119,29 @@ public class ListAdapter extends BaseAdapter {
             viewHolder.etime.setText(bean.getSubtotal());
         }
 
-        if (bean.isFocus()) {
-            if (!viewHolder.place.isFocused()) {
-                viewHolder.place.requestFocus();
-            }
-            CharSequence text = bean.getPlace();
-            viewHolder.place.setSelection(TextUtils.isEmpty(text) ? 0 : text.length());
-        } else {
-            if (viewHolder.place.isFocused()) {
-                viewHolder.place.clearFocus();
-            }
-        }
+//        if (bean.isFocus()) {
+//            if (!viewHolder.place.isFocused()) {
+//                viewHolder.place.requestFocus();
+//            }
+//            CharSequence text = bean.getPlace();
+//            viewHolder.place.setSelection(TextUtils.isEmpty(text) ? 0 : text.length());
+//        } else {
+//            if (viewHolder.place.isFocused()) {
+//                viewHolder.place.clearFocus();
+//            }
+//        }
 
         viewHolder.place.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(final View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-                    final boolean focus = bean.isFocus();
-                    check(position);
-                    if (!focus && !viewHolder.place.isFocused()) {
-                        viewHolder.place.requestFocus();
-                        viewHolder.place.onWindowFocusChanged(true);
-                    }
+//                    final boolean focus = bean.isFocus();
+//                    check(position);
+//                    if (!focus && !viewHolder.place.isFocused()) {
+//                        viewHolder.place.requestFocus();
+//                        viewHolder.place.onWindowFocusChanged(true);
+//                    }
+                        index = position;
                 }
                 return false;
             }
@@ -213,7 +216,15 @@ public class ListAdapter extends BaseAdapter {
 
         viewHolder.stime.setText(bean.getStime());
        // viewHolder.etime.setText(bean.getEtime());
-
+        viewHolder.place.clearFocus();
+        if(index != -1 && index == position){
+            //强制加上焦点
+            viewHolder.place.requestFocus();
+            //设置光标显示到编辑框尾部
+            viewHolder.place.setSelection(viewHolder.place .getText().length());
+            //重置
+            index = -1;
+        }
         return convertView;
     }
 
