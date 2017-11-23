@@ -8,6 +8,7 @@ public class ItemBean {
     private String place;
     private String stime;
     private String etime;
+    private String subtotal;//小计
 
     private boolean focus;
 
@@ -17,6 +18,14 @@ public class ItemBean {
 
     public void setFocus(boolean focus) {
         this.focus = focus;
+    }
+
+    public void setSubtotal(String subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public String getSubtotal() {
+        return subtotal;
     }
 
     public String getPlace() {

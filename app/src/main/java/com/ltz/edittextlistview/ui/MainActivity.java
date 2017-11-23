@@ -17,7 +17,6 @@ import com.ltz.edittextlistview.adapter.MyAdapter;
 import com.ltz.edittextlistview.bean.Bean;
 import com.ltz.edittextlistview.bean.ItemBean;
 import com.ltz.qrcode.qrcode.QRCodeEncoder;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     public StringBuffer QRContent;
 
+    public static MainActivity instence;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        instence = this;
         super.onCreate(savedInstanceState);
         ContentView(0);
     }
@@ -155,6 +157,17 @@ public class MainActivity extends AppCompatActivity {
                 .encode(QRContent.toString());
 
         qr_img.setImageBitmap(qrCodeImage);
+    }
+
+    public double allpriace;
+    public void refushButton(double priace){
+      Button button = (Button) findViewById(R.id.add);
+        button.setText("总计-->"+addpriace(allpriace,priace));
+    }
+
+    public double addpriace(double all,double singlepriace){
+        allpriace = all+singlepriace;
+        return all + singlepriace;
     }
 
 

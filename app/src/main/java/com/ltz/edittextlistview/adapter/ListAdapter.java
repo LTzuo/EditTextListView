@@ -45,6 +45,21 @@ public class ListAdapter extends BaseAdapter {
         this.inflater = LayoutInflater.from(context);
     }
 
+    public void AllPriace(){
+        StringBuffer sb = new StringBuffer();
+        for(ItemBean b : datas){
+
+        }
+    }
+
+//    StringBuffer sb = new StringBuffer();
+//    for(Bean b : mDatas){
+//        if(!TextUtils.isEmpty(b.getEdit_string())){
+//            sb.append(b.getTitle()+","+b.getEdit_string()+";");
+//        }
+//    }
+//    return sb;
+
     @Override
     public int getCount() {
         return datas.size();
@@ -85,7 +100,6 @@ public class ListAdapter extends BaseAdapter {
 
         viewHolder.num.setText(String.valueOf(position + 1));
 
-
         final ItemBean bean = datas.get(position);
         if (viewHolder.place.getTag() instanceof TextWatcher) {
             viewHolder.place.removeTextChangedListener((TextWatcher) (viewHolder.place.getTag()));
@@ -95,6 +109,12 @@ public class ListAdapter extends BaseAdapter {
             viewHolder.place.setText("");
         } else {
             viewHolder.place.setText(bean.getPlace());
+        }
+
+        if (TextUtils.isEmpty(bean.getSubtotal())) {
+            viewHolder.etime.setText("");
+        } else {
+            viewHolder.etime.setText(bean.getSubtotal());
         }
 
         if (bean.isFocus()) {
@@ -139,8 +159,13 @@ public class ListAdapter extends BaseAdapter {
             public void afterTextChanged(Editable s) {
                 if (TextUtils.isEmpty(s)) {
                     bean.setPlace(null);
+                    viewHolder.etime.setText(null);
+                    bean.setSubtotal(null);
                 } else {
                     bean.setPlace(String.valueOf(s));
+                    viewHolder.etime.setText(mul(Double.valueOf(String.valueOf(s)),0.18)+"");
+                    bean.setSubtotal(mul(Double.valueOf(String.valueOf(s)),0.18)+"");
+                    MainActivity.instence.refushButton(mul(Double.valueOf(String.valueOf(s)),0.18));
                 }
             }
         };
@@ -187,7 +212,7 @@ public class ListAdapter extends BaseAdapter {
         });
 
         viewHolder.stime.setText(bean.getStime());
-        viewHolder.etime.setText(bean.getEtime());
+       // viewHolder.etime.setText(bean.getEtime());
 
         return convertView;
     }
@@ -198,6 +223,11 @@ public class ListAdapter extends BaseAdapter {
             l.setFocus(false);
         }
         datas.get(position).setFocus(true);
+    }
+
+    public double mul(double a,double b){
+        double result = a * b;
+        return result;
     }
 
     class ViewHolder {

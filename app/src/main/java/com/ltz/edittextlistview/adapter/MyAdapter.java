@@ -36,7 +36,7 @@ public class MyAdapter extends BaseAdapter{
         StringBuffer sb = new StringBuffer();
         for(Bean b : mDatas){
             if(!TextUtils.isEmpty(b.getEdit_string())){
-                sb.append(b.getTitle()+":"+b.getEdit_string()+"\n");
+                sb.append(b.getTitle()+","+b.getEdit_string()+";");
             }
         }
         return sb;
