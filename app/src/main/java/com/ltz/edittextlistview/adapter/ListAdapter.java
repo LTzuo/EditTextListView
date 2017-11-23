@@ -219,9 +219,12 @@ public class ListAdapter extends BaseAdapter {
         viewHolder.place.clearFocus();
         if(index != -1 && index == position){
             //强制加上焦点
+//            viewHolder.place.requestFocus();
+//            //设置光标显示到编辑框尾部
+//            viewHolder.place.setSelection(viewHolder.place .getText().length());
+            viewHolder.place.setFocusable(true);
+            viewHolder.place.setFocusableInTouchMode(true);
             viewHolder.place.requestFocus();
-            //设置光标显示到编辑框尾部
-            viewHolder.place.setSelection(viewHolder.place .getText().length());
             //重置
             index = -1;
         }
