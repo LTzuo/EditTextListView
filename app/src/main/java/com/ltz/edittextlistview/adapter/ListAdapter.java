@@ -168,7 +168,7 @@ public class ListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (position != 0) {
-                    new AlertDialog.Builder(context).setTitle("你确定要删除行程明细" + (position + 1) + "吗？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    new AlertDialog.Builder(context).setTitle("你确定要删除垃圾明细" + (position + 1) + "吗？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             MainActivity.data2.remove(position);
