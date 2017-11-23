@@ -186,7 +186,6 @@ public class ListAdapter extends BaseAdapter {
             }
         });
 
-
         viewHolder.stime.setText(bean.getStime());
         viewHolder.etime.setText(bean.getEtime());
 

@@ -90,7 +90,7 @@
             android:layout_toRightOf="@+id/stime"
             android:drawableEnd="@mipmap/more"
             android:drawableRight="@mipmap/more"
-            android:hint="0.18元"
+            android:hint="0.18元/斤"
             android:padding="12dp"
             android:textSize="14sp" />
 
@@ -99,7 +99,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
 
         <TextView
             android:id="@+id/etime"
