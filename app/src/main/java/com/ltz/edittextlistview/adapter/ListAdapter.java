@@ -50,15 +50,15 @@ public class ListAdapter extends BaseAdapter {
         for(ItemBean b : datas){
 
         }
-    }
 
-//    StringBuffer sb = new StringBuffer();
+      //  StringBuffer sb = new StringBuffer();
 //    for(Bean b : mDatas){
 //        if(!TextUtils.isEmpty(b.getEdit_string())){
 //            sb.append(b.getTitle()+","+b.getEdit_string()+";");
 //        }
 //    }
 //    return sb;
+    }
 
     @Override
     public int getCount() {
