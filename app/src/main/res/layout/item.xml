@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/place"
             android:layout_toRightOf="@+id/place"
+            android:digits=".0123456789"
             android:background="@null"
             android:hint="(必填)"
             android:padding="12dp"
