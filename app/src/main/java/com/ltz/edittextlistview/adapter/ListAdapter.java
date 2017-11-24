@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.ltz.edittextlistview.R;
 import com.ltz.edittextlistview.bean.ItemBean;
 import com.ltz.edittextlistview.ui.MainActivity;
+import com.ltz.edittextlistview.util.DecCalUtil;
 import com.ltz.edittextlistview.widget.DateTimePickDialogUtil2016;
 
 import java.util.ArrayList;
@@ -47,21 +48,20 @@ public class ListAdapter extends BaseAdapter {
         this.inflater = LayoutInflater.from(context);
     }
 
-    public void AllPriace(){
-        StringBuffer sb = new StringBuffer();
+    public void refushAllPriace(){
+        String allpriace = "";
         for(ItemBean b : datas){
-
+            if(!TextUtils.isEmpty(b.getSubtotal())){
+                if(TextUtils.isEmpty(allpriace)){
+                    allpriace = b.getSubtotal();
+                }else{
+                    allpriace = DecCalUtil.add(allpriace, b.getSubtotal());
+                }
+            }
         }
-
-      //  StringBuffer sb = new StringBuffer();
-//    for(Bean b : mDatas){
-//        if(!TextUtils.isEmpty(b.getEdit_string())){
-//            sb.append(b.getTitle()+","+b.getEdit_string()+";");
-//        }
-//    }
-//    return sb;
+        if(MainActivity.instence != null)
+            MainActivity.instence.refushButton(allpriace);
     }
-
     @Override
     public int getCount() {
         return datas.size();
@@ -164,11 +164,12 @@ public class ListAdapter extends BaseAdapter {
                     bean.setPlace(null);
                     viewHolder.etime.setText(null);
                     bean.setSubtotal(null);
+                    refushAllPriace();
                 } else {
                     bean.setPlace(String.valueOf(s));
-                    viewHolder.etime.setText(mul(Double.valueOf(String.valueOf(s)),0.18)+"");
-                    bean.setSubtotal(mul(Double.valueOf(String.valueOf(s)),0.18)+"");
-                    MainActivity.instence.refushButton(mul(Double.valueOf(String.valueOf(s)),0.18));
+                    viewHolder.etime.setText(DecCalUtil.mul(String.valueOf(s), "0.18"));
+                    bean.setSubtotal(DecCalUtil.mul(String.valueOf(s), "0.18"));
+                    refushAllPriace();
                 }
             }
         };

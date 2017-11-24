@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.ltz.edittextlistview.R;
 import com.ltz.edittextlistview.adapter.ListAdapter;
 import com.ltz.edittextlistview.adapter.MyAdapter;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public StringBuffer QRContent;
 
     public static MainActivity instence;
+    public TextView tv_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,10 +125,11 @@ public class MainActivity extends AppCompatActivity {
                 ContentView(0);
             }
         });
+        tv_price = (TextView) findViewById(R.id.tv_price);
         ListView listView = (ListView) findViewById(R.id.listview);
-        View footView = LayoutInflater.from(this).inflate(R.layout.button,null);
-        Button button = (Button) footView.findViewById(R.id.add);
-        listView.addFooterView(footView);
+//        View footView = LayoutInflater.from(this).inflate(R.layout.button,null);
+        Button button = (Button) findViewById(R.id.Generateorder);
+//        listView.addFooterView(footView);
         data2 = new ArrayList<>();
         data2.add(new ItemBean());
         final ListAdapter adapter = new ListAdapter(data2, this, MainActivity.this);
@@ -164,17 +168,9 @@ public class MainActivity extends AppCompatActivity {
         qr_img.setImageBitmap(qrCodeImage);
     }
 
-    public double allpriace;
-    public void refushButton(double priace){
-      Button button = (Button) findViewById(R.id.add);
-        button.setText("总计-->"+addpriace(allpriace,priace));
+    public void refushButton(String price){
+        tv_price.setText("总价：￥"+price);
     }
-
-    public double addpriace(double all,double singlepriace){
-        allpriace = all+singlepriace;
-        return all + singlepriace;
-    }
-
 
 
 }
