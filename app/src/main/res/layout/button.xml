@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_gravity="bottom"
+    android:layout_height="45dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#4e4e4e"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_weight="1"
+        android:textSize="18dp"
+        android:text="总计：￥26"
+        />
     <Button
-        android:id="@+id/add"
-        android:layout_width="match_parent"
+        android:id="@+id/Generateorder"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add"
-        android:textColor="#4169E1" />
+        android:background="#56d176"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:gravity="center"
+        android:text="生成订单"
+        android:textColor="#ffffff" />
 </LinearLayout>
